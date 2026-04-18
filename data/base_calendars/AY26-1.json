@@ -1,0 +1,35 @@
+{
+  "_comment": "USMA Academic Year 2026, Semester 1 (Fall 2025). Bundled fallback — update when scraper fetches official calendar.",
+  "_source": "Approximated from USMA academic calendar conventions. Verify against official Dean's Office publication.",
+  "ay": "AY26-1",
+  "semester": "Fall 2025",
+  "start_date": "2025-08-11",
+  "end_date": "2025-12-05",
+  "tee_start": "2025-12-08",
+  "tee_end": "2025-12-19",
+  "grad_start": null,
+  "grad_end": null,
+  "first_academic_day_type": "1",
+  "special_days": {
+    "2025-09-01": {
+      "day_type": "holiday",
+      "notes": ["Labor Day"]
+    },
+    "2025-10-13": {
+      "day_type": "holiday",
+      "notes": ["Columbus Day / Indigenous Peoples Day"]
+    },
+    "2025-11-11": {
+      "day_type": "holiday",
+      "notes": ["Veterans Day"]
+    },
+    "2025-11-27": {
+      "day_type": "holiday",
+      "notes": ["Thanksgiving"]
+    },
+    "2025-11-28": {
+      "day_type": "holiday",
+      "notes": ["Thanksgiving Holiday"]
+    }
+  }
+}

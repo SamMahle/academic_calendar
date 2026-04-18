@@ -1,0 +1,28 @@
+{
+  "_comment": "Event detection patterns for CadetCal. Uses Python regex syntax. Edit to tune extraction without code changes.",
+  "event_type_keywords": {
+    "WPR": ["WPR", "Written Partial Review", "Written Partial Exam", "Written Partial"],
+    "TEE": ["TEE", "Term End Exam", "Final Exam", "Final"],
+    "Writ": ["Writ", "Written Exercise", "Written Recitation"],
+    "PS":   ["PS", "Problem Set", "Homework Set", "HW Set"],
+    "HW":   ["HW", "Homework", "Assignment", "Reading Assignment"],
+    "Quiz": ["Quiz", "Quizlet", "In-class Quiz", "Pop Quiz"],
+    "Lab":  ["Lab", "Laboratory", "Graded Lab", "Lab Report"],
+    "Project": ["Project", "Design Project", "Group Project", "Team Project", "Term Project", "Capstone"]
+  },
+  "lesson_ref_patterns": [
+    "(?:L|Lesson\\s*)(\\d+)(?:\\s*[-–]\\s*(\\d+))?",
+    "(?:Wk|Week)\\s*(\\d+)",
+    "(?:Lesson)\\s*(\\d+)",
+    "\\bL(\\d{1,2})\\b"
+  ],
+  "date_patterns": [
+    "\\b(\\d{1,2})\\s+(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\b",
+    "\\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+(\\d{1,2})\\b",
+    "\\b(\\d{1,2})/(\\d{1,2})(?:/(\\d{2,4}))?\\b"
+  ],
+  "course_code_patterns": [
+    "\\b([A-Z]{2,4}\\d{3,4}[A-Z]?)\\b",
+    "\\b([A-Z]{2,4}\\s*\\d{3,4})\\b"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "classic": {
+    "description": "Traditional cadet calendar format matching the long-standing West Point style",
+    "header_fill": "1F3864",
+    "header_font": "FFFFFF",
+    "month_label_fill": "2E75B6",
+    "month_label_font": "FFFFFF",
+    "day_header_fill": "BDD7EE",
+    "day_header_font": "000000",
+    "weekend_fill": "D9D9D9",
+    "weekend_font": "595959",
+    "holiday_fill": "FFC000",
+    "holiday_font": "000000",
+    "tee_fill": "C00000",
+    "tee_font": "FFFFFF",
+    "grad_fill": "FFD700",
+    "grad_font": "000000",
+    "day1_marker": "D6E4F0",
+    "day2_marker": "E8F5E9",
+    "cell_border": "000000",
+    "default_course_colors": [
+      "FF6B6B", "4ECDC4", "45B7D1", "96CEB4",
+      "FFEAA7", "DDA0DD", "98D8C8", "F7DC6F",
+      "B8860B", "7B68EE", "20B2AA", "FF8C00"
+    ]
+  },
+  "modern": {
+    "description": "Clean modern design with restrained palette and subtle borders",
+    "header_fill": "212529",
+    "header_font": "F8F9FA",
+    "month_label_fill": "495057",
+    "month_label_font": "FFFFFF",
+    "day_header_fill": "E9ECEF",
+    "day_header_font": "212529",
+    "weekend_fill": "F8F9FA",
+    "weekend_font": "ADB5BD",
+    "holiday_fill": "FFF3CD",
+    "holiday_font": "212529",
+    "tee_fill": "F8D7DA",
+    "tee_font": "721C24",
+    "grad_fill": "FFF3CD",
+    "grad_font": "856404",
+    "day1_marker": "EFF6FF",
+    "day2_marker": "F0FDF4",
+    "cell_border": "DEE2E6",
+    "default_course_colors": [
+      "74C0FC", "63E6BE", "FFD43B", "FF8787",
+      "B197FC", "F783AC", "4DABF7", "51CF66",
+      "FCC419", "FF6B6B", "CC5DE8", "22B8CF"
+    ]
+  },
+  "print": {
+    "description": "Grayscale with heavy borders optimized for black-and-white printing",
+    "header_fill": "000000",
+    "header_font": "FFFFFF",
+    "month_label_fill": "404040",
+    "month_label_font": "FFFFFF",
+    "day_header_fill": "D0D0D0",
+    "day_header_font": "000000",
+    "weekend_fill": "E8E8E8",
+    "weekend_font": "606060",
+    "holiday_fill": "B0B0B0",
+    "holiday_font": "000000",
+    "tee_fill": "808080",
+    "tee_font": "FFFFFF",
+    "grad_fill": "C8C8C8",
+    "grad_font": "000000",
+    "day1_marker": "F0F0F0",
+    "day2_marker": "E0E0E0",
+    "cell_border": "000000",
+    "default_course_colors": [
+      "C0C0C0", "A0A0A0", "808080", "909090",
+      "B0B0B0", "D0D0D0", "707070", "C8C8C8",
+      "989898", "888888", "B8B8B8", "A8A8A8"
+    ]
+  }
+}
