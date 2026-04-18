@@ -125,6 +125,16 @@ class BaseCalendar:
             return self._load_fallback()
         try:
             raw = json.loads(path.read_text(encoding="utf-8"))
+            # Try to layer in live scraper data (M6). Import here to avoid
+            # a circular import at module load time.
+            try:
+                from core.scraper import fetch_calendar_updates
+                updates = fetch_calendar_updates(ay)
+                if updates and "special_days" in updates:
+                    raw.setdefault("special_days", {}).update(updates["special_days"])
+                    logger.info("Applied %d scraped special days", len(updates["special_days"]))
+            except Exception as scrape_exc:
+                logger.debug("Scraper skipped: %s", scrape_exc)
             return _build_day_map(raw)
         except Exception as exc:
             logger.error("Failed to parse %s: %s; using fallback", path, exc)
