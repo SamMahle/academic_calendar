@@ -171,15 +171,18 @@ class TestAY26Calendars:
         assert meta.day_type == "holiday"
 
     def test_ay26_2_spring_break_is_break(self):
+        # Buff Card: Spring Break Mar 30 – Apr 3, 2026
         cal = BaseCalendar("AY26-2")
-        for day in range(16, 21):
-            meta = cal.get_day_meta(date(2026, 3, day))
+        for d in [date(2026, 3, 30), date(2026, 3, 31),
+                  date(2026, 4, 1), date(2026, 4, 2), date(2026, 4, 3)]:
+            meta = cal.get_day_meta(d)
             assert meta is not None
-            assert meta.day_type == "break", f"2026-03-{day} should be break"
+            assert meta.day_type == "break", f"{d} should be break"
 
     def test_ay26_1_tee_week(self):
+        # Buff Card: TEE Dec 16-19, 2025
         cal = BaseCalendar("AY26-1")
-        for day in range(8, 20):
+        for day in range(16, 20):
             meta = cal.get_day_meta(date(2025, 12, day))
             if date(2025, 12, day).weekday() < 5:
                 assert meta is not None
