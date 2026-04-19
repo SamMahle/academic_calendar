@@ -16,11 +16,9 @@ of a day.
 
 ### Option 1 — Use the web app (no install)
 
-**[Open CadetCal](https://cadetcal.streamlit.app)** ← just click and go
+**[Open CadetCal](https://academiccalendar-cadet.streamlit.app/)** ← just click and go
 
 Works in any browser. No account, no install, no setup.
-
-> ⚠️ Replace the URL above with your Streamlit Community Cloud link after deploying from [share.streamlit.io](https://share.streamlit.io).
 
 ### Option 2 — Run locally (Windows / Mac)
 
