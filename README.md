@@ -20,7 +20,8 @@ Requires **Python 3.11+** installed ([download here](https://www.python.org/down
 
 1. Download or clone this repo
 2. **Windows:** double-click `run.bat`
-3. **Mac/Linux:** run `bash run.sh` in Terminal
+3. **Mac:** double-click `run.command` (if blocked by Gatekeeper, right-click → Open)
+4. **Linux:** run `bash run.sh` in Terminal
 
 The script creates a virtual environment, installs all dependencies on first run, and opens the app in your browser automatically. Subsequent launches skip setup and start in seconds.
 
