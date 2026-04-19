@@ -34,11 +34,10 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-### Option 3 — Standalone .exe
+### Option 3 — Standalone .exe (coming soon)
 
-Download `cadetcal.exe` from the latest GitHub Release and double-click it.
-It launches a local Streamlit server and opens your default browser. No install,
-no internet required (uses bundled academic calendar as fallback).
+A pre-built `cadetcal.exe` will be available in GitHub Releases once it has been
+tested on a cadet computer. In the meantime use Option 1 (run.bat).
 
 ---
 
