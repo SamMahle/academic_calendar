@@ -52,13 +52,13 @@ no internet required (uses bundled academic calendar as fallback).
 | # | Description | Status |
 |---|-------------|--------|
 | M1 | Skeleton, models, base calendar | ✅ |
-| M2 | DOCX parser → Excel renderer | 🔲 |
-| M3 | Streamlit UI | 🔲 |
-| M4 | PDF/XLSX parsers, ICS/PDF renderers | 🔲 |
-| M5 | Copilot handoff | 🔲 |
-| M6 | USMA calendar scraper | 🔲 |
-| M7 | PyInstaller packaging | 🔲 |
-| M8 | Polish and fixtures | 🔲 |
+| M2 | DOCX parser → Excel renderer | ✅ |
+| M3 | Streamlit UI | ✅ |
+| M4 | PDF/XLSX parsers, ICS/PDF renderers | ✅ |
+| M5 | Copilot handoff | ✅ |
+| M6 | USMA calendar scraper | ✅ |
+| M7 | PyInstaller packaging | ✅ |
+| M8 | Polish and fixtures | ✅ |
 
 ---
 
