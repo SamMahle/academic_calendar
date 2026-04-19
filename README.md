@@ -20,7 +20,8 @@ Requires **Python 3.11+** installed ([download here](https://www.python.org/down
 
 1. Download or clone this repo
 2. **Windows:** double-click `run.bat`
-3. **Mac/Linux:** run `bash run.sh` in Terminal
+3. **Mac:** double-click `run.command` (if blocked by Gatekeeper, right-click → Open)
+4. **Linux:** run `bash run.sh` in Terminal
 
 The script creates a virtual environment, installs all dependencies on first run, and opens the app in your browser automatically. Subsequent launches skip setup and start in seconds.
 
@@ -34,11 +35,10 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-### Option 3 — Standalone .exe
+### Option 3 — Standalone .exe (coming soon)
 
-Download `cadetcal.exe` from the latest GitHub Release and double-click it.
-It launches a local Streamlit server and opens your default browser. No install,
-no internet required (uses bundled academic calendar as fallback).
+A pre-built `cadetcal.exe` will be available in GitHub Releases once it has been
+tested on a cadet computer. In the meantime use Option 1 (run.bat).
 
 ---
 
