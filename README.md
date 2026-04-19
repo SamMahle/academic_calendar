@@ -14,13 +14,17 @@ of a day.
 
 ## Quick Start
 
-### Option 1 — Hosted (zero install)
+### Option 1 — Double-click launcher (easiest)
 
-Visit the Streamlit Community Cloud link in the Releases section of this repo.
-Syllabi are processed in-browser via the Streamlit server — see the privacy note
-below if you have concerns about sensitive course materials.
+Requires **Python 3.11+** installed ([download here](https://www.python.org/downloads/) — check "Add Python to PATH").
 
-### Option 2 — Local Python
+1. Download or clone this repo
+2. **Windows:** double-click `run.bat`
+3. **Mac/Linux:** run `bash run.sh` in Terminal
+
+The script creates a virtual environment, installs all dependencies on first run, and opens the app in your browser automatically. Subsequent launches skip setup and start in seconds.
+
+### Option 2 — Manual Python setup
 
 ```bash
 git clone https://github.com/sammahle/academic_calendar.git
