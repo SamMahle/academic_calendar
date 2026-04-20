@@ -1,11 +1,11 @@
 {
-  "_comment": "USMA Academic Year 2026, Semester 1 (Fall 2025). Bundled fallback — update when scraper fetches official calendar.",
-  "_source": "Approximated from USMA academic calendar conventions. Verify against official Dean's Office publication.",
+  "_comment": "USMA AY26-1. Parsed from official Buff Card (As of 19 Apr 2026).",
+  "_source": "https://courses.westpoint.edu/view_full_buff_card.cfm",
   "ay": "AY26-1",
   "semester": "Fall 2025",
-  "start_date": "2025-08-11",
-  "end_date": "2025-12-05",
-  "tee_start": "2025-12-08",
+  "start_date": "2025-08-18",
+  "end_date": "2025-12-15",
+  "tee_start": "2025-12-16",
   "tee_end": "2025-12-19",
   "grad_start": null,
   "grad_end": null,
@@ -13,23 +13,45 @@
   "special_days": {
     "2025-09-01": {
       "day_type": "holiday",
-      "notes": ["Labor Day"]
+      "notes": [
+        "Labor Day; No Class Day"
+      ]
     },
     "2025-10-13": {
       "day_type": "holiday",
-      "notes": ["Columbus Day / Indigenous Peoples Day"]
+      "notes": [
+        "Columbus Day;  No Class Day"
+      ]
+    },
+    "2025-11-10": {
+      "day_type": "holiday",
+      "notes": [
+        "No Class Day"
+      ]
     },
     "2025-11-11": {
       "day_type": "holiday",
-      "notes": ["Veterans Day"]
+      "notes": [
+        "Veteran's Day; No Class Day"
+      ]
     },
     "2025-11-27": {
       "day_type": "holiday",
-      "notes": ["Thanksgiving"]
+      "notes": [
+        "Th'giving;No Classes"
+      ]
     },
     "2025-11-28": {
       "day_type": "holiday",
-      "notes": ["Thanksgiving Holiday"]
+      "notes": [
+        "No Classes"
+      ]
+    },
+    "2025-12-01": {
+      "day_type": "holiday",
+      "notes": [
+        "No Class Day"
+      ]
     }
   }
 }
