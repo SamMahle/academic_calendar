@@ -4,13 +4,13 @@ Layout (8 columns):
   A         B–H
   Month     Mon Tue Wed Thu Fri Sat Sun
 
-For each calendar week, three row groups are written:
-  1. Date-number row  (shows day of month, special fills for TEE/holiday)
+For each calendar week, six rows are written (always uniform):
+  1. Date-number row  (day of month + special-day note)
   2. Day-type row     (D-1, D-2, HOL, TEE, BRK …)
-  3. N event rows     (one per concurrent event in the busiest day of that week)
+  3–6. Four fixed event slots
 
-The month label in column A is merged vertically across all rows of the week
-and re-printed each time the month changes.
+Column A is merged across all rows that belong to the same calendar month,
+and alternates between two soft colors so months are easy to distinguish.
 """
 
 import io
@@ -29,13 +29,17 @@ _DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 _MONTH_COL = 1      # column A
 _FIRST_DAY_COL = 2  # column B (Monday)
 
-_DAY_COL_WIDTH = 22       # matches the roomy cells of the official grid
-_CHARS_PER_LINE = 23      # conservative chars-per-line at 9pt in a width-22 column
-_LINE_HEIGHT = 13         # points per wrapped line
+_DAY_COL_WIDTH = 22
+_N_EVENT_ROWS = 4                 # fixed slots per week
+_ROWS_PER_WEEK = 2 + _N_EVENT_ROWS  # date row + type row + 4 event rows = 6
+_CHARS_PER_LINE = 23              # chars that fit in a width-22 col at 9pt
+_LINE_HEIGHT = 13                 # points per wrapped text line
+
+# Alternating month-column fills — one pair, cycles by month index
+_MONTH_FILLS = ["C5D9F1", "D8E4BC"]   # soft blue / soft green
 
 
 def _lines_needed(text: str) -> int:
-    """Estimate how many wrapped lines `text` occupies in a day cell."""
     total = 0
     for part in str(text).split("\n"):
         total += max(1, math.ceil(len(part) / _CHARS_PER_LINE))
@@ -104,9 +108,38 @@ def render_excel(
     start_mon = _monday(cal_days[0])
     last_day = cal_days[-1]
 
-    row = 1
+    # Ordered list of week Monday dates
+    weeks: list[date] = []
+    w = start_mon
+    while w <= last_day:
+        weeks.append(w)
+        w += timedelta(weeks=1)
+
+    # ── Pre-compute month spans ─────────────────────────────────────────────
+    # Title row = 1, header row = 2, content starts at row 3.
+    # Each week always occupies exactly _ROWS_PER_WEEK rows.
+    CONTENT_START = 3
+
+    # month_info: ordered list of {label, first_row, last_row, color_idx}
+    month_info: dict[str, dict] = {}   # keyed by "MMM" label
+    month_order: list[str] = []
+
+    for idx, week_mon in enumerate(weeks):
+        first_row = CONTENT_START + idx * _ROWS_PER_WEEK
+        last_row = first_row + _ROWS_PER_WEEK - 1
+        label = week_mon.strftime("%b").upper()
+        if label not in month_info:
+            month_info[label] = {
+                "first_row": first_row,
+                "last_row": last_row,
+                "color_idx": len(month_order),
+            }
+            month_order.append(label)
+        else:
+            month_info[label]["last_row"] = last_row
 
     # ── Title row ──────────────────────────────────────────────────────────
+    row = 1
     tc = ws.cell(row=row, column=_MONTH_COL, value=f"Cadet Calendar — {ay}")
     tc.font = Font(bold=True, size=14, color=theme["header_font"])
     tc.fill = _fill(theme["header_fill"])
@@ -124,19 +157,11 @@ def render_excel(
         c.alignment = Alignment(horizontal="center", vertical="center")
         c.border = _thin()
     ws.row_dimensions[row].height = 18
-    row += 1
+    row += 1  # row is now CONTENT_START
 
     # ── Weeks ──────────────────────────────────────────────────────────────
-    week_start = start_mon
-    last_month_label: Optional[str] = None
-
-    while week_start <= last_day:
-        week = [week_start + timedelta(days=i) for i in range(7)]
-        max_events = max(len(by_date.get(d, [])) for d in week)
-        n_evt_rows = max(1, max_events)
-        total = 2 + n_evt_rows  # date row + type row + event rows
-
-        month_label = week_start.strftime("%b").upper()
+    for week_mon in weeks:
+        week = [week_mon + timedelta(days=i) for i in range(7)]
 
         # ── Date-number row ────────────────────────────────────────────────
         date_row = row
@@ -148,9 +173,7 @@ def render_excel(
 
             if dt == "weekend":
                 fgc, fnt = theme["weekend_fill"], theme["weekend_font"]
-            elif dt == "holiday":
-                fgc, fnt = theme["holiday_fill"], theme["holiday_font"]
-            elif dt == "break":
+            elif dt in ("holiday", "break"):
                 fgc, fnt = theme["holiday_fill"], theme["holiday_font"]
             elif dt == "tee":
                 fgc, fnt = theme["tee_fill"], theme["tee_font"]
@@ -190,8 +213,8 @@ def render_excel(
             c.border = _thin()
         ws.row_dimensions[type_row].height = 14
 
-        # ── Event rows ─────────────────────────────────────────────────────
-        for slot in range(n_evt_rows):
+        # ── Event slots (always 4) ─────────────────────────────────────────
+        for slot in range(_N_EVENT_ROWS):
             evt_row = row + 2 + slot
             slot_lines = 1
             for i, d in enumerate(week):
@@ -224,23 +247,32 @@ def render_excel(
                     c.border = _thin()
             ws.row_dimensions[evt_row].height = max(18, slot_lines * _LINE_HEIGHT + 4)
 
-        # ── Month label (column A, merged across all rows of this week) ────
-        mc = ws.cell(row=row, column=_MONTH_COL)
-        if month_label != last_month_label:
-            mc.value = month_label
-            last_month_label = month_label
-        mc.font = Font(bold=True, size=9, color=theme["month_label_font"])
-        mc.fill = _fill(theme["month_label_fill"])
+        row += _ROWS_PER_WEEK
+
+    # ── Month labels — merged across entire month, alternating colors ──────
+    for label in month_order:
+        info = month_info[label]
+        fill_hex = _MONTH_FILLS[info["color_idx"] % len(_MONTH_FILLS)]
+        first_r = info["first_row"]
+        last_r = info["last_row"]
+
+        # Fill every cell in the span so borders appear on all rows
+        for r in range(first_r, last_r + 1):
+            c = ws.cell(row=r, column=_MONTH_COL)
+            c.fill = _fill(fill_hex)
+            c.border = _thin()
+
+        # Value and formatting on the top cell only (openpyxl merge rule)
+        mc = ws.cell(row=first_r, column=_MONTH_COL, value=label)
+        mc.font = Font(bold=True, size=11, color="000000")
+        mc.fill = _fill(fill_hex)
         mc.alignment = Alignment(horizontal="center", vertical="center", text_rotation=90)
         mc.border = _thin()
-        if total > 1:
-            ws.merge_cells(
-                start_row=row, start_column=_MONTH_COL,
-                end_row=row + total - 1, end_column=_MONTH_COL,
-            )
 
-        row += total
-        week_start += timedelta(weeks=1)
+        ws.merge_cells(
+            start_row=first_r, start_column=_MONTH_COL,
+            end_row=last_r, end_column=_MONTH_COL,
+        )
 
     buf = io.BytesIO()
     wb.save(buf)
