@@ -124,17 +124,17 @@ def classify(info: dict) -> str:
     notes = info["notes"].lower()
     class_num = info["class_num"]
 
-    # Sunday (col 0) or Saturday (col 6) → weekend
-    if col == 0 or col == 6:
-        return "weekend"
-
     if class_num:
         track = class_num.split("-")[0]
         return track  # "1" or "2"
 
-    # No class number — classify by notes
+    # TEEs can run on Saturdays, so check before the weekend rule
     if "tee" in notes:
         return "tee"
+
+    # Sunday (col 0) or Saturday (col 6) → weekend
+    if col == 0 or col == 6:
+        return "weekend"
     if "spring break" in notes or "recess" in notes:
         return "break"
     if "reorgy" in notes or "march back" in notes:
@@ -162,22 +162,23 @@ def build_semester(
     ay: str,
     semester_label: str,
 ) -> dict:
-    """Build the JSON dict for one semester."""
+    """Build the explicit-days JSON dict for one semester.
 
-    # Collect all weekdays in range and determine their types
+    Every weekday from the first class day through TEE/grad gets an entry.
+    Class numbers ("1-15") are kept verbatim as track + lesson because the
+    official rotation is not strictly alternating.
+    """
     from datetime import timedelta
-    special_days: dict[str, dict] = {}
 
     first_type: str | None = None
     instruction_start: date | None = None
     instruction_end: date | None = None
 
-    # First pass: find instruction_start so we can filter special_days correctly
+    # First pass: locate the instruction window
     d = sem_start
     while d <= max(tee_end, grad_end or tee_end):
         if d in all_days:
-            info = all_days[d]
-            dt = classify(info)
+            dt = classify(all_days[d])
             in_tee = tee_start <= d <= tee_end
             in_grad = (grad_start is not None and grad_end is not None
                        and grad_start <= d <= grad_end)
@@ -188,29 +189,38 @@ def build_semester(
                 instruction_end = d
         d += timedelta(days=1)
 
-    # Second pass: collect special_days only within [instruction_start, tee_end/grad_end]
+    # Second pass: emit every weekday explicitly
+    days: dict[str, dict] = {}
     effective_start = instruction_start or sem_start
     effective_end = grad_end if grad_end else tee_end
     d = effective_start
     while d <= effective_end:
-        if d in all_days:
-            info = all_days[d]
-            dt = classify(info)
-            raw_notes = info["notes"]
-            is_weekend = (dt == "weekend")
+        if d.weekday() < 5 or (d in all_days and classify(all_days[d]) != "weekend"):
+            info = all_days.get(d)
             in_tee = tee_start <= d <= tee_end
             in_grad = (grad_start is not None and grad_end is not None
                        and grad_start <= d <= grad_end)
-            is_academic = dt in ("1", "2")
-            if not is_academic and not is_weekend and not in_tee and not in_grad:
-                special_days[d.isoformat()] = {
-                    "day_type": dt,
-                    "notes": [raw_notes] if raw_notes else [],
-                }
+            if info is None:
+                if d.weekday() < 5:
+                    dt = "tee" if in_tee else ("grad" if in_grad else "R")
+                    days[d.isoformat()] = {"day_type": dt, "notes": []}
+                d += timedelta(days=1)
+                continue
+            dt = classify(info)
+            if dt == "weekend":
+                d += timedelta(days=1)
+                continue
+            entry: dict = {"day_type": dt}
+            if dt in ("1", "2") and info["class_num"]:
+                entry["lesson"] = int(info["class_num"].split("-")[1])
+            if info["notes"]:
+                entry["notes"] = [info["notes"]]
+            days[d.isoformat()] = entry
         d += timedelta(days=1)
 
     return {
-        "_comment": f"USMA {ay}. Parsed from official Buff Card (As of 19 Apr 2026).",
+        "_comment": f"USMA {ay}. Parsed from official Buff Card (As of 19 Apr 2026). "
+                    "Explicit per-date class numbers; rotation is not strictly alternating.",
         "_source": "https://courses.westpoint.edu/view_full_buff_card.cfm",
         "ay": ay,
         "semester": semester_label,
@@ -220,8 +230,7 @@ def build_semester(
         "tee_end": tee_end.isoformat(),
         "grad_start": grad_start.isoformat() if grad_start else None,
         "grad_end": grad_end.isoformat() if grad_end else None,
-        "first_academic_day_type": first_type or "1",
-        "special_days": special_days,
+        "days": days,
     }
 
 
@@ -240,7 +249,7 @@ def main() -> None:
         sem_start=date(2025, 8, 1),
         sem_end=date(2025, 12, 15),
         tee_start=date(2025, 12, 16),
-        tee_end=date(2025, 12, 19),
+        tee_end=date(2025, 12, 20),
         grad_start=None,
         grad_end=None,
         ay="AY26-1",
@@ -264,9 +273,9 @@ def main() -> None:
     for data, filename in [(ay261, "AY26-1.json"), (ay262, "AY26-2.json")]:
         out = HERE / filename
         out.write_text(json.dumps(data, indent=2), encoding="utf-8")
+        n_academic = sum(1 for v in data["days"].values() if v["day_type"] in ("1", "2"))
         print(f"  Wrote {filename}  (start={data['start_date']}, end={data['end_date']}, "
-              f"first_type={data['first_academic_day_type']}, "
-              f"specials={len(data['special_days'])})")
+              f"days={len(data['days'])}, academic={n_academic})")
 
     print("Done.")
 

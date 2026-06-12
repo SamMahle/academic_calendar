@@ -38,18 +38,30 @@ A pre-built `cadetcal.exe` will be posted in GitHub Releases once tested on a ca
 
 ---
 
-## Contributing
+## How it works
 
-| # | Description | Status |
-|---|-------------|--------|
-| M1 | Skeleton, models, base calendar | ✅ |
-| M2 | DOCX parser → Excel renderer | ✅ |
-| M3 | Streamlit UI | ✅ |
-| M4 | PDF/XLSX parsers, ICS/PDF renderers | ✅ |
-| M5 | Copilot handoff | ✅ |
-| M6 | USMA calendar scraper | ✅ |
-| M7 | PyInstaller packaging | ✅ |
-| M8 | Polish and fixtures | ✅ |
+1. **Upload** your syllabi (XLSX, DOCX, or PDF) — course code is auto-detected
+   where possible; pick your section's track (Day 1 / Day 2) and a color.
+2. **Review** the extracted events. Everything is confidence-scored; dates
+   with stale template years are corrected automatically against the official
+   academic calendar.
+3. **Export** a color-coded Excel week-grid, an `.ics` file for Outlook /
+   Google Calendar, and a printable PDF.
+
+### Calendar data
+
+Bundled semester calendars carry the exact Day-1/Day-2 class numbers from the
+official USMA sources — the rotation is *not* strictly alternating, so lesson
+references like "L15" resolve to the true date:
+
+| Semester | Source |
+|----------|--------|
+| AY26-1 (Fall 2025) | Buff Card (`data/base_calendars/parse_buff_card.py`) |
+| AY26-2 (Spring 2026) | Buff Card |
+| AY27-1 (Fall 2026) | Dean's calendar grid (`data/base_calendars/parse_ay_grid.py`) |
+
+When a new academic year is published, drop the source file into
+`data/base_calendars/sources/` and re-run the matching parser script.
 
 ---
 

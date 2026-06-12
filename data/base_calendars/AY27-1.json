@@ -1,0 +1,439 @@
+{
+  "_comment": "USMA AY27-1. Parsed from the Dean's blank calendar grid. Explicit per-date class numbers; rotation is not strictly alternating.",
+  "_source": "AY27-1_grid.xlsx",
+  "ay": "AY27-1",
+  "semester": "Fall 2026",
+  "start_date": "2026-08-17",
+  "end_date": "2026-12-14",
+  "tee_start": "2026-12-15",
+  "tee_end": "2026-12-19",
+  "grad_start": null,
+  "grad_end": null,
+  "days": {
+    "2026-08-17": {
+      "day_type": "1",
+      "lesson": 1,
+      "notes": [
+        "First Day of Class"
+      ]
+    },
+    "2026-08-18": {
+      "day_type": "2",
+      "lesson": 1
+    },
+    "2026-08-19": {
+      "day_type": "1",
+      "lesson": 2
+    },
+    "2026-08-20": {
+      "day_type": "2",
+      "lesson": 2
+    },
+    "2026-08-21": {
+      "day_type": "2",
+      "lesson": 3
+    },
+    "2026-08-24": {
+      "day_type": "1",
+      "lesson": 3,
+      "notes": [
+        "Branch Week"
+      ]
+    },
+    "2026-08-25": {
+      "day_type": "2",
+      "lesson": 4,
+      "notes": [
+        "Branch Week"
+      ]
+    },
+    "2026-08-26": {
+      "day_type": "1",
+      "lesson": 4,
+      "notes": [
+        "Branch Week"
+      ]
+    },
+    "2026-08-27": {
+      "day_type": "2",
+      "lesson": 5,
+      "notes": [
+        "Branch Week"
+      ]
+    },
+    "2026-08-28": {
+      "day_type": "1",
+      "lesson": 5,
+      "notes": [
+        "Branch Week"
+      ]
+    },
+    "2026-08-31": {
+      "day_type": "1",
+      "lesson": 6
+    },
+    "2026-09-01": {
+      "day_type": "2",
+      "lesson": 6
+    },
+    "2026-09-02": {
+      "day_type": "1",
+      "lesson": 7
+    },
+    "2026-09-03": {
+      "day_type": "2",
+      "lesson": 7,
+      "notes": [
+        "MA WPR"
+      ]
+    },
+    "2026-09-04": {
+      "day_type": "2",
+      "lesson": 8
+    },
+    "2026-09-07": {
+      "day_type": "holiday",
+      "notes": [
+        "Labor Day"
+      ]
+    },
+    "2026-09-08": {
+      "day_type": "1",
+      "lesson": 8
+    },
+    "2026-09-09": {
+      "day_type": "2",
+      "lesson": 9
+    },
+    "2026-09-10": {
+      "day_type": "1",
+      "lesson": 9
+    },
+    "2026-09-11": {
+      "day_type": "2",
+      "lesson": 10
+    },
+    "2026-09-14": {
+      "day_type": "1",
+      "lesson": 10
+    },
+    "2026-09-15": {
+      "day_type": "2",
+      "lesson": 11
+    },
+    "2026-09-16": {
+      "day_type": "1",
+      "lesson": 11
+    },
+    "2026-09-17": {
+      "day_type": "2",
+      "lesson": 12
+    },
+    "2026-09-18": {
+      "day_type": "1",
+      "lesson": 12
+    },
+    "2026-09-21": {
+      "day_type": "1",
+      "lesson": 13
+    },
+    "2026-09-22": {
+      "day_type": "2",
+      "lesson": 13
+    },
+    "2026-09-23": {
+      "day_type": "1",
+      "lesson": 14
+    },
+    "2026-09-24": {
+      "day_type": "2",
+      "lesson": 14
+    },
+    "2026-09-25": {
+      "day_type": "2",
+      "lesson": 15
+    },
+    "2026-09-28": {
+      "day_type": "1",
+      "lesson": 15
+    },
+    "2026-09-29": {
+      "day_type": "2",
+      "lesson": 16
+    },
+    "2026-09-30": {
+      "day_type": "1",
+      "lesson": 16
+    },
+    "2026-10-01": {
+      "day_type": "2",
+      "lesson": 17
+    },
+    "2026-10-02": {
+      "day_type": "1",
+      "lesson": 17
+    },
+    "2026-10-05": {
+      "day_type": "1",
+      "lesson": 18
+    },
+    "2026-10-06": {
+      "day_type": "2",
+      "lesson": 18
+    },
+    "2026-10-07": {
+      "day_type": "1",
+      "lesson": 19
+    },
+    "2026-10-08": {
+      "day_type": "2",
+      "lesson": 19,
+      "notes": [
+        "End of Round 1"
+      ]
+    },
+    "2026-10-09": {
+      "day_type": "2",
+      "lesson": 20
+    },
+    "2026-10-12": {
+      "day_type": "holiday",
+      "notes": [
+        "Columbus Day"
+      ]
+    },
+    "2026-10-13": {
+      "day_type": "1",
+      "lesson": 20,
+      "notes": [
+        "Round 2 Start"
+      ]
+    },
+    "2026-10-14": {
+      "day_type": "2",
+      "lesson": 21
+    },
+    "2026-10-15": {
+      "day_type": "1",
+      "lesson": 21
+    },
+    "2026-10-16": {
+      "day_type": "2",
+      "lesson": 22
+    },
+    "2026-10-19": {
+      "day_type": "1",
+      "lesson": 22
+    },
+    "2026-10-20": {
+      "day_type": "2",
+      "lesson": 23
+    },
+    "2026-10-21": {
+      "day_type": "1",
+      "lesson": 23
+    },
+    "2026-10-22": {
+      "day_type": "2",
+      "lesson": 24
+    },
+    "2026-10-23": {
+      "day_type": "1",
+      "lesson": 24
+    },
+    "2026-10-26": {
+      "day_type": "1",
+      "lesson": 25
+    },
+    "2026-10-27": {
+      "day_type": "2",
+      "lesson": 25
+    },
+    "2026-10-28": {
+      "day_type": "1",
+      "lesson": 26
+    },
+    "2026-10-29": {
+      "day_type": "2",
+      "lesson": 26
+    },
+    "2026-10-30": {
+      "day_type": "2",
+      "lesson": 27
+    },
+    "2026-11-02": {
+      "day_type": "1",
+      "lesson": 27
+    },
+    "2026-11-03": {
+      "day_type": "2",
+      "lesson": 28
+    },
+    "2026-11-04": {
+      "day_type": "1",
+      "lesson": 28
+    },
+    "2026-11-05": {
+      "day_type": "2",
+      "lesson": 29
+    },
+    "2026-11-06": {
+      "day_type": "1",
+      "lesson": 29
+    },
+    "2026-11-09": {
+      "day_type": "1",
+      "lesson": 30
+    },
+    "2026-11-10": {
+      "day_type": "2",
+      "lesson": 30
+    },
+    "2026-11-11": {
+      "day_type": "holiday",
+      "notes": [
+        "Veterans Day"
+      ]
+    },
+    "2026-11-12": {
+      "day_type": "2",
+      "lesson": 31
+    },
+    "2026-11-13": {
+      "day_type": "1",
+      "lesson": 31
+    },
+    "2026-11-16": {
+      "day_type": "1",
+      "lesson": 32
+    },
+    "2026-11-17": {
+      "day_type": "2",
+      "lesson": 32
+    },
+    "2026-11-18": {
+      "day_type": "1",
+      "lesson": 33
+    },
+    "2026-11-19": {
+      "day_type": "2",
+      "lesson": 33
+    },
+    "2026-11-20": {
+      "day_type": "2",
+      "lesson": 34
+    },
+    "2026-11-23": {
+      "day_type": "1",
+      "lesson": 34
+    },
+    "2026-11-24": {
+      "day_type": "2",
+      "lesson": 35
+    },
+    "2026-11-25": {
+      "day_type": "1",
+      "lesson": 35,
+      "notes": [
+        "Mod. Day"
+      ]
+    },
+    "2026-11-26": {
+      "day_type": "holiday",
+      "notes": [
+        "Thanksgiving"
+      ]
+    },
+    "2026-11-27": {
+      "day_type": "holiday",
+      "notes": [
+        "Training Holiday"
+      ]
+    },
+    "2026-11-30": {
+      "day_type": "holiday",
+      "notes": [
+        "Corps Returns"
+      ]
+    },
+    "2026-12-01": {
+      "day_type": "2",
+      "lesson": 36
+    },
+    "2026-12-02": {
+      "day_type": "1",
+      "lesson": 36,
+      "notes": [
+        "Branch Night"
+      ]
+    },
+    "2026-12-03": {
+      "day_type": "2",
+      "lesson": 37
+    },
+    "2026-12-04": {
+      "day_type": "1",
+      "lesson": 37
+    },
+    "2026-12-07": {
+      "day_type": "1",
+      "lesson": 38
+    },
+    "2026-12-08": {
+      "day_type": "2",
+      "lesson": 38
+    },
+    "2026-12-09": {
+      "day_type": "1",
+      "lesson": 39
+    },
+    "2026-12-10": {
+      "day_type": "2",
+      "lesson": 39
+    },
+    "2026-12-11": {
+      "day_type": "1",
+      "lesson": 40,
+      "notes": [
+        "Mod. Day"
+      ]
+    },
+    "2026-12-14": {
+      "day_type": "2",
+      "lesson": 40,
+      "notes": [
+        "Reading Day"
+      ]
+    },
+    "2026-12-15": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-12-16": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-12-17": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-12-18": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-12-19": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    }
+  }
+}

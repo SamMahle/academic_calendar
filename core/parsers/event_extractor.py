@@ -314,9 +314,19 @@ def extract_events(
 ) -> list[Event]:
     """Extract graded events from a parsed syllabus, sorted by date.
 
+    XLSX workbooks with a recognizable lesson-schedule sheet go through the
+    structured extractor, which is row-accurate. Everything else falls back
+    to the generic two-pass keyword extractor.
+
     Events with no resolvable date are dropped; the caller should surface
     the Copilot handoff panel when many events fall below 0.4 confidence.
     """
+    if doc.sheets:
+        from core.parsers.syllabus_xlsx import extract_structured
+        structured = extract_structured(doc, course_code, course_track, calendar)
+        if structured:
+            return structured
+
     raw = _dedup(_from_text(doc.full_text, course_code, course_track, calendar)
                  + _from_tables(doc.tables, course_code, course_track, calendar))
 

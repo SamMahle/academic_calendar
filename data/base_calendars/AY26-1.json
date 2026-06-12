@@ -1,26 +1,368 @@
 {
-  "_comment": "USMA AY26-1. Parsed from official Buff Card (As of 19 Apr 2026).",
+  "_comment": "USMA AY26-1. Parsed from official Buff Card (As of 19 Apr 2026). Explicit per-date class numbers; rotation is not strictly alternating.",
   "_source": "https://courses.westpoint.edu/view_full_buff_card.cfm",
   "ay": "AY26-1",
   "semester": "Fall 2025",
   "start_date": "2025-08-18",
   "end_date": "2025-12-15",
   "tee_start": "2025-12-16",
-  "tee_end": "2025-12-19",
+  "tee_end": "2025-12-20",
   "grad_start": null,
   "grad_end": null,
-  "first_academic_day_type": "1",
-  "special_days": {
+  "days": {
+    "2025-08-18": {
+      "day_type": "1",
+      "lesson": 1,
+      "notes": [
+        "CMDT;1st Day of Class"
+      ]
+    },
+    "2025-08-19": {
+      "day_type": "2",
+      "lesson": 1
+    },
+    "2025-08-20": {
+      "day_type": "1",
+      "lesson": 2,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-08-21": {
+      "day_type": "2",
+      "lesson": 2
+    },
+    "2025-08-22": {
+      "day_type": "2",
+      "lesson": 3,
+      "notes": [
+        "Ring Wknd"
+      ]
+    },
+    "2025-08-25": {
+      "day_type": "1",
+      "lesson": 3,
+      "notes": [
+        "CMDT;Branch Wk"
+      ]
+    },
+    "2025-08-26": {
+      "day_type": "2",
+      "lesson": 4,
+      "notes": [
+        "Branch Wk"
+      ]
+    },
+    "2025-08-27": {
+      "day_type": "1",
+      "lesson": 4,
+      "notes": [
+        "CMDT;Branch Wk"
+      ]
+    },
+    "2025-08-28": {
+      "day_type": "2",
+      "lesson": 5,
+      "notes": [
+        "Branch Wk; Lab MU"
+      ]
+    },
+    "2025-08-29": {
+      "day_type": "1",
+      "lesson": 5,
+      "notes": [
+        "CMDT;Branch Wk;Tarleton State; MOD Schedule"
+      ]
+    },
     "2025-09-01": {
       "day_type": "holiday",
       "notes": [
         "Labor Day; No Class Day"
       ]
     },
+    "2025-09-02": {
+      "day_type": "2",
+      "lesson": 6
+    },
+    "2025-09-03": {
+      "day_type": "1",
+      "lesson": 6,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-09-04": {
+      "day_type": "2",
+      "lesson": 7
+    },
+    "2025-09-05": {
+      "day_type": "1",
+      "lesson": 7,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-08": {
+      "day_type": "1",
+      "lesson": 8,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-09": {
+      "day_type": "2",
+      "lesson": 8
+    },
+    "2025-09-10": {
+      "day_type": "1",
+      "lesson": 9,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-09-11": {
+      "day_type": "2",
+      "lesson": 9
+    },
+    "2025-09-12": {
+      "day_type": "2",
+      "lesson": 10,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
+    "2025-09-15": {
+      "day_type": "1",
+      "lesson": 10,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-16": {
+      "day_type": "2",
+      "lesson": 11
+    },
+    "2025-09-17": {
+      "day_type": "1",
+      "lesson": 11,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-09-18": {
+      "day_type": "2",
+      "lesson": 12
+    },
+    "2025-09-19": {
+      "day_type": "1",
+      "lesson": 12,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-22": {
+      "day_type": "1",
+      "lesson": 13,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-23": {
+      "day_type": "2",
+      "lesson": 13
+    },
+    "2025-09-24": {
+      "day_type": "1",
+      "lesson": 14,
+      "notes": [
+        "CMDT;KRL Lecture"
+      ]
+    },
+    "2025-09-25": {
+      "day_type": "2",
+      "lesson": 14,
+      "notes": [
+        "E. Carolina; (Away)"
+      ]
+    },
+    "2025-09-26": {
+      "day_type": "2",
+      "lesson": 15,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
+    "2025-09-29": {
+      "day_type": "1",
+      "lesson": 15,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-09-30": {
+      "day_type": "2",
+      "lesson": 16
+    },
+    "2025-10-01": {
+      "day_type": "1",
+      "lesson": 16,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-10-02": {
+      "day_type": "2",
+      "lesson": 17
+    },
+    "2025-10-03": {
+      "day_type": "1",
+      "lesson": 17,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-06": {
+      "day_type": "1",
+      "lesson": 18,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-07": {
+      "day_type": "2",
+      "lesson": 18
+    },
+    "2025-10-08": {
+      "day_type": "1",
+      "lesson": 19,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-09": {
+      "day_type": "2",
+      "lesson": 19
+    },
+    "2025-10-10": {
+      "day_type": "2",
+      "lesson": 20,
+      "notes": [
+        "DEAN-PRIME;No Labs; End of Rnd1"
+      ]
+    },
     "2025-10-13": {
       "day_type": "holiday",
       "notes": [
         "Columbus Day;  No Class Day"
+      ]
+    },
+    "2025-10-14": {
+      "day_type": "1",
+      "lesson": 20,
+      "notes": [
+        "CMDT; Beginning of Rnd2"
+      ]
+    },
+    "2025-10-15": {
+      "day_type": "2",
+      "lesson": 21
+    },
+    "2025-10-16": {
+      "day_type": "1",
+      "lesson": 21,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-17": {
+      "day_type": "2",
+      "lesson": 22
+    },
+    "2025-10-20": {
+      "day_type": "1",
+      "lesson": 22,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-21": {
+      "day_type": "2",
+      "lesson": 23
+    },
+    "2025-10-22": {
+      "day_type": "1",
+      "lesson": 23,
+      "notes": [
+        "DEAN;Plebe Majors Fair"
+      ]
+    },
+    "2025-10-23": {
+      "day_type": "2",
+      "lesson": 24
+    },
+    "2025-10-24": {
+      "day_type": "1",
+      "lesson": 24,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-10-27": {
+      "day_type": "1",
+      "lesson": 25,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-28": {
+      "day_type": "2",
+      "lesson": 25
+    },
+    "2025-10-29": {
+      "day_type": "1",
+      "lesson": 26,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-10-30": {
+      "day_type": "2",
+      "lesson": 26
+    },
+    "2025-10-31": {
+      "day_type": "2",
+      "lesson": 27,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
+    "2025-11-03": {
+      "day_type": "1",
+      "lesson": 27,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-11-04": {
+      "day_type": "2",
+      "lesson": 28
+    },
+    "2025-11-05": {
+      "day_type": "1",
+      "lesson": 28,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-11-06": {
+      "day_type": "2",
+      "lesson": 29
+    },
+    "2025-11-07": {
+      "day_type": "1",
+      "lesson": 29,
+      "notes": [
+        "CMDT"
       ]
     },
     "2025-11-10": {
@@ -33,6 +375,71 @@
       "day_type": "holiday",
       "notes": [
         "Veteran's Day; No Class Day"
+      ]
+    },
+    "2025-11-12": {
+      "day_type": "2",
+      "lesson": 30
+    },
+    "2025-11-13": {
+      "day_type": "1",
+      "lesson": 30,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-11-14": {
+      "day_type": "2",
+      "lesson": 31
+    },
+    "2025-11-17": {
+      "day_type": "1",
+      "lesson": 31,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-11-18": {
+      "day_type": "2",
+      "lesson": 32
+    },
+    "2025-11-19": {
+      "day_type": "1",
+      "lesson": 32,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-11-20": {
+      "day_type": "2",
+      "lesson": 33
+    },
+    "2025-11-21": {
+      "day_type": "2",
+      "lesson": 34,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
+    "2025-11-24": {
+      "day_type": "1",
+      "lesson": 33,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-11-25": {
+      "day_type": "2",
+      "lesson": 35,
+      "notes": [
+        "Lab MUs"
+      ]
+    },
+    "2025-11-26": {
+      "day_type": "1",
+      "lesson": 34,
+      "notes": [
+        "DEAN;Modified Day"
       ]
     },
     "2025-11-27": {
@@ -51,6 +458,100 @@
       "day_type": "holiday",
       "notes": [
         "No Class Day"
+      ]
+    },
+    "2025-12-02": {
+      "day_type": "1",
+      "lesson": 35,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-12-03": {
+      "day_type": "2",
+      "lesson": 36,
+      "notes": [
+        "Branch Night"
+      ]
+    },
+    "2025-12-04": {
+      "day_type": "1",
+      "lesson": 36,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-12-05": {
+      "day_type": "2",
+      "lesson": 37
+    },
+    "2025-12-08": {
+      "day_type": "1",
+      "lesson": 37,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2025-12-09": {
+      "day_type": "2",
+      "lesson": 38
+    },
+    "2025-12-10": {
+      "day_type": "1",
+      "lesson": 38,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2025-12-11": {
+      "day_type": "2",
+      "lesson": 39,
+      "notes": [
+        "Lab MUs"
+      ]
+    },
+    "2025-12-12": {
+      "day_type": "1",
+      "lesson": 39,
+      "notes": [
+        "CMDT;Modified Day"
+      ]
+    },
+    "2025-12-15": {
+      "day_type": "1",
+      "lesson": 40,
+      "notes": [
+        "DEAN;40@55min Classes only; Otherwise Reading Day"
+      ]
+    },
+    "2025-12-16": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2025-12-17": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2025-12-18": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2025-12-19": {
+      "day_type": "tee",
+      "notes": [
+        "TEE;Dec Grad"
+      ]
+    },
+    "2025-12-20": {
+      "day_type": "tee",
+      "notes": [
+        "TEE;End of Term"
       ]
     }
   }

@@ -1,5 +1,5 @@
 {
-  "_comment": "USMA AY26-2. Parsed from official Buff Card (As of 19 Apr 2026).",
+  "_comment": "USMA AY26-2. Parsed from official Buff Card (As of 19 Apr 2026). Explicit per-date class numbers; rotation is not strictly alternating.",
   "_source": "https://courses.westpoint.edu/view_full_buff_card.cfm",
   "ay": "AY26-2",
   "semester": "Spring 2026",
@@ -9,18 +9,359 @@
   "tee_end": "2026-05-16",
   "grad_start": "2026-05-18",
   "grad_end": "2026-05-22",
-  "first_academic_day_type": "2",
-  "special_days": {
+  "days": {
+    "2026-01-06": {
+      "day_type": "2",
+      "lesson": 1,
+      "notes": [
+        "1st Day of Classes; No Labs"
+      ]
+    },
+    "2026-01-07": {
+      "day_type": "1",
+      "lesson": 1,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-01-08": {
+      "day_type": "2",
+      "lesson": 2
+    },
+    "2026-01-09": {
+      "day_type": "1",
+      "lesson": 2,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-01-12": {
+      "day_type": "1",
+      "lesson": 3,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-01-13": {
+      "day_type": "2",
+      "lesson": 3
+    },
+    "2026-01-14": {
+      "day_type": "1",
+      "lesson": 4,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-01-15": {
+      "day_type": "2",
+      "lesson": 4
+    },
+    "2026-01-16": {
+      "day_type": "2",
+      "lesson": 5,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
     "2026-01-19": {
       "day_type": "holiday",
       "notes": [
         "MLK: No Classes"
       ]
     },
+    "2026-01-20": {
+      "day_type": "1",
+      "lesson": 5,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-01-21": {
+      "day_type": "2",
+      "lesson": 6
+    },
+    "2026-01-22": {
+      "day_type": "1",
+      "lesson": 6,
+      "notes": [
+        "DEAN; Majors Open House"
+      ]
+    },
+    "2026-01-23": {
+      "day_type": "2",
+      "lesson": 7
+    },
+    "2026-01-26": {
+      "day_type": "1",
+      "lesson": 7,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-01-27": {
+      "day_type": "2",
+      "lesson": 8
+    },
+    "2026-01-28": {
+      "day_type": "1",
+      "lesson": 8,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-01-29": {
+      "day_type": "2",
+      "lesson": 9
+    },
+    "2026-01-30": {
+      "day_type": "1",
+      "lesson": 9,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-02": {
+      "day_type": "1",
+      "lesson": 10,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-03": {
+      "day_type": "2",
+      "lesson": 10
+    },
+    "2026-02-04": {
+      "day_type": "1",
+      "lesson": 11,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-02-05": {
+      "day_type": "2",
+      "lesson": 11
+    },
+    "2026-02-06": {
+      "day_type": "2",
+      "lesson": 12,
+      "notes": [
+        "DEAN-PRIME; No Labs"
+      ]
+    },
+    "2026-02-09": {
+      "day_type": "1",
+      "lesson": 12,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-10": {
+      "day_type": "2",
+      "lesson": 13
+    },
+    "2026-02-11": {
+      "day_type": "1",
+      "lesson": 13,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-12": {
+      "day_type": "2",
+      "lesson": 14
+    },
+    "2026-02-13": {
+      "day_type": "1",
+      "lesson": 14,
+      "notes": [
+        "DEAN"
+      ]
+    },
     "2026-02-16": {
       "day_type": "holiday",
       "notes": [
         "Washington's Birthday; Presidents' Day; No Classes"
+      ]
+    },
+    "2026-02-17": {
+      "day_type": "2",
+      "lesson": 15
+    },
+    "2026-02-18": {
+      "day_type": "1",
+      "lesson": 15,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-02-19": {
+      "day_type": "2",
+      "lesson": 16
+    },
+    "2026-02-20": {
+      "day_type": "1",
+      "lesson": 16,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-23": {
+      "day_type": "1",
+      "lesson": 17,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-02-24": {
+      "day_type": "2",
+      "lesson": 17
+    },
+    "2026-02-25": {
+      "day_type": "1",
+      "lesson": 18,
+      "notes": [
+        "CMDT;Post Night"
+      ]
+    },
+    "2026-02-26": {
+      "day_type": "2",
+      "lesson": 18
+    },
+    "2026-02-27": {
+      "day_type": "2",
+      "lesson": 19,
+      "notes": [
+        "DEAN-PRIME;No Labs"
+      ]
+    },
+    "2026-03-02": {
+      "day_type": "1",
+      "lesson": 19,
+      "notes": [
+        "DEAN;End of Rnd1"
+      ]
+    },
+    "2026-03-03": {
+      "day_type": "2",
+      "lesson": 20,
+      "notes": [
+        "Beginning of Rnd2"
+      ]
+    },
+    "2026-03-04": {
+      "day_type": "1",
+      "lesson": 20,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-05": {
+      "day_type": "2",
+      "lesson": 21,
+      "notes": [
+        "MCC-1CL Trip Section"
+      ]
+    },
+    "2026-03-06": {
+      "day_type": "1",
+      "lesson": 21,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-09": {
+      "day_type": "1",
+      "lesson": 22,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-10": {
+      "day_type": "2",
+      "lesson": 22
+    },
+    "2026-03-11": {
+      "day_type": "1",
+      "lesson": 23,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-12": {
+      "day_type": "2",
+      "lesson": 23
+    },
+    "2026-03-13": {
+      "day_type": "2",
+      "lesson": 24,
+      "notes": [
+        "DEAN-PRIME; No Labs;Plebe-only CMDT Hr"
+      ]
+    },
+    "2026-03-16": {
+      "day_type": "1",
+      "lesson": 24,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-17": {
+      "day_type": "2",
+      "lesson": 25
+    },
+    "2026-03-18": {
+      "day_type": "1",
+      "lesson": 25,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-03-19": {
+      "day_type": "2",
+      "lesson": 26
+    },
+    "2026-03-20": {
+      "day_type": "1",
+      "lesson": 26,
+      "notes": [
+        "CMDT;Plebe-only DEAN Hr"
+      ]
+    },
+    "2026-03-23": {
+      "day_type": "1",
+      "lesson": 27,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-03-24": {
+      "day_type": "2",
+      "lesson": 27,
+      "notes": [
+        "Lab MUs"
+      ]
+    },
+    "2026-03-25": {
+      "day_type": "1",
+      "lesson": 28,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-03-26": {
+      "day_type": "2",
+      "lesson": 28,
+      "notes": [
+        "Upperclass Released after last duty; Lab MUs"
+      ]
+    },
+    "2026-03-27": {
+      "day_type": "2",
+      "lesson": 29,
+      "notes": [
+        "Class for 4CL; PPW; No Labs"
       ]
     },
     "2026-03-30": {
@@ -59,16 +400,210 @@
         "No Class Day"
       ]
     },
+    "2026-04-07": {
+      "day_type": "1",
+      "lesson": 29,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-08": {
+      "day_type": "2",
+      "lesson": 30
+    },
+    "2026-04-09": {
+      "day_type": "1",
+      "lesson": 30,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-10": {
+      "day_type": "2",
+      "lesson": 31
+    },
+    "2026-04-13": {
+      "day_type": "1",
+      "lesson": 31,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-14": {
+      "day_type": "2",
+      "lesson": 32
+    },
+    "2026-04-15": {
+      "day_type": "1",
+      "lesson": 32,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-04-16": {
+      "day_type": "2",
+      "lesson": 33
+    },
+    "2026-04-17": {
+      "day_type": "1",
+      "lesson": 33,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-20": {
+      "day_type": "1",
+      "lesson": 34,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-21": {
+      "day_type": "2",
+      "lesson": 34
+    },
+    "2026-04-22": {
+      "day_type": "1",
+      "lesson": 35,
+      "notes": [
+        "DEAN"
+      ]
+    },
     "2026-04-23": {
       "day_type": "holiday",
       "notes": [
         "Projects Day;No Classes"
       ]
     },
+    "2026-04-24": {
+      "day_type": "2",
+      "lesson": 35
+    },
+    "2026-04-27": {
+      "day_type": "1",
+      "lesson": 36,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-04-28": {
+      "day_type": "2",
+      "lesson": 36
+    },
+    "2026-04-29": {
+      "day_type": "1",
+      "lesson": 37,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-04-30": {
+      "day_type": "2",
+      "lesson": 37
+    },
     "2026-05-01": {
       "day_type": "holiday",
       "notes": [
         "Sandhurst;No Classes"
+      ]
+    },
+    "2026-05-04": {
+      "day_type": "1",
+      "lesson": 38,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-05-05": {
+      "day_type": "2",
+      "lesson": 38
+    },
+    "2026-05-06": {
+      "day_type": "1",
+      "lesson": 39,
+      "notes": [
+        "DEAN"
+      ]
+    },
+    "2026-05-07": {
+      "day_type": "2",
+      "lesson": 39,
+      "notes": [
+        "Lab MUs"
+      ]
+    },
+    "2026-05-08": {
+      "day_type": "1",
+      "lesson": 40,
+      "notes": [
+        "CMDT"
+      ]
+    },
+    "2026-05-11": {
+      "day_type": "2",
+      "lesson": 40,
+      "notes": [
+        "40@55min Classes only; Otherwise Reading Day"
+      ]
+    },
+    "2026-05-12": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-05-13": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-05-14": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-05-15": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-05-16": {
+      "day_type": "tee",
+      "notes": [
+        "TEE"
+      ]
+    },
+    "2026-05-18": {
+      "day_type": "grad",
+      "notes": [
+        "STAP 1 DPE Starts;Grad Wk"
+      ]
+    },
+    "2026-05-19": {
+      "day_type": "grad",
+      "notes": [
+        "STAP 1 Academics Starts;Grad Wk"
+      ]
+    },
+    "2026-05-20": {
+      "day_type": "grad",
+      "notes": [
+        "Grad Wk"
+      ]
+    },
+    "2026-05-21": {
+      "day_type": "grad",
+      "notes": [
+        "Grad Wk"
+      ]
+    },
+    "2026-05-22": {
+      "day_type": "grad",
+      "notes": [
+        "Grad Wk"
       ]
     }
   }

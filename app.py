@@ -46,7 +46,15 @@ _THEMES: dict = json.loads(_THEMES_FILE.read_text())
 
 _DEFAULT_COLORS = _THEMES["classic"]["default_course_colors"]
 
-_AY_OPTIONS = ["AY26-2", "AY26-1"]  # most recent first
+_AY_OPTIONS = ["AY27-1", "AY26-2", "AY26-1"]  # most recent first
+
+
+def _default_ay() -> str:
+    """Jan–May -> in-progress spring; Jun–Dec -> (upcoming) fall."""
+    today = date.today()
+    yy = today.year % 100
+    ay = f"AY{yy:02d}-2" if today.month <= 5 else f"AY{yy + 1:02d}-1"
+    return ay if ay in _AY_OPTIONS else _AY_OPTIONS[0]
 
 
 def _course_color(code: str, used: list[str]) -> str:
@@ -127,7 +135,7 @@ def _render_pdf(events, courses, cal, theme_name):
 def _init_state():
     defaults = {
         "step": "upload",
-        "ay": _AY_OPTIONS[0],
+        "ay": _default_ay(),
         "calendar": None,
         "uploads": [],        # list of {filename, doc, course_code, short_name, track, color}
         "events": [],         # list of Event (final, after review)
@@ -229,11 +237,17 @@ if st.session_state.step == "upload":
         for f in uploaded:
             if f.name not in existing_names:
                 existing_names.add(f.name)
-                suggested_code = Path(f.name).stem.upper()[:8]
+                file_bytes = f.read()
+                doc = _parse_uploaded(file_bytes, f.name)
+                from core.parsers.syllabus_xlsx import detect_course_code
+                suggested_code = (
+                    detect_course_code(doc, filename=f.name)
+                    or Path(f.name).stem.upper()[:8]
+                )
                 st.session_state.uploads.append({
                     "filename": f.name,
-                    "bytes": f.read(),
-                    "doc": None,
+                    "bytes": file_bytes,
+                    "doc": doc,
                     "course_code": suggested_code,
                     "short_name": suggested_code,
                     "track": 1,
@@ -284,7 +298,7 @@ if st.session_state.step == "upload":
 
             with st.spinner("Parsing syllabi…"):
                 for up in st.session_state.uploads:
-                    doc = _parse_uploaded(up["bytes"], up["filename"])
+                    doc = up.get("doc") or _parse_uploaded(up["bytes"], up["filename"])
                     if doc.is_scan:
                         scans.append(up["filename"])
                     events = extract_events(doc, up["course_code"], up["track"], cal)
@@ -329,7 +343,8 @@ elif st.session_state.step == "review":
             "🟢 ≥70% auto-accepted · 🟡 40–69% needs review · 🔴 <40% consider Copilot handoff"
         )
         df = _events_df(events)
-        styled = df.style.applymap(_confidence_style, subset=["Confidence"])
+        _style_fn = getattr(df.style, "map", df.style.applymap)
+        styled = _style_fn(_confidence_style, subset=["Confidence"])
         st.dataframe(styled, use_container_width=True, hide_index=True)
 
     # ── Edit / delete individual events ────────────────────────────────────
@@ -386,7 +401,7 @@ elif st.session_state.step == "review":
     # ── Copilot handoff ─────────────────────────────────────────────────────
     low_conf = [e for e in events if e.confidence < THRESHOLD_COPILOT_HANDOFF]
     scanned_uploads = [u for u in st.session_state.uploads
-                       if _parse_uploaded(u["bytes"], u["filename"]).is_scan
+                       if (u.get("doc") or _parse_uploaded(u["bytes"], u["filename"])).is_scan
                        ] if not events else []
 
     needs_copilot = bool(low_conf or scanned_uploads)
