@@ -14,6 +14,7 @@ and re-printed each time the month changes.
 """
 
 import io
+import math
 from datetime import date, timedelta
 from typing import Optional
 
@@ -27,6 +28,18 @@ from core.models import Course, Event
 _DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
 _MONTH_COL = 1      # column A
 _FIRST_DAY_COL = 2  # column B (Monday)
+
+_DAY_COL_WIDTH = 22       # matches the roomy cells of the official grid
+_CHARS_PER_LINE = 23      # conservative chars-per-line at 9pt in a width-22 column
+_LINE_HEIGHT = 13         # points per wrapped line
+
+
+def _lines_needed(text: str) -> int:
+    """Estimate how many wrapped lines `text` occupies in a day cell."""
+    total = 0
+    for part in str(text).split("\n"):
+        total += max(1, math.ceil(len(part) / _CHARS_PER_LINE))
+    return total
 
 
 def _thin() -> Border:
@@ -76,7 +89,7 @@ def render_excel(
     # Column widths
     ws.column_dimensions[get_column_letter(_MONTH_COL)].width = 7
     for i in range(7):
-        ws.column_dimensions[get_column_letter(_FIRST_DAY_COL + i)].width = 13
+        ws.column_dimensions[get_column_letter(_FIRST_DAY_COL + i)].width = _DAY_COL_WIDTH
 
     # Event lookup
     by_date: dict[date, list[Event]] = {}
@@ -127,6 +140,7 @@ def render_excel(
 
         # ── Date-number row ────────────────────────────────────────────────
         date_row = row
+        date_row_lines = 1
         for i, d in enumerate(week):
             col = _FIRST_DAY_COL + i
             meta = calendar.get_day_meta(d) if d <= last_day else None
@@ -159,7 +173,9 @@ def render_excel(
             c.fill = _fill(fgc)
             c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=bool(note))
             c.border = _thin()
-        ws.row_dimensions[date_row].height = 16
+            if note:
+                date_row_lines = max(date_row_lines, _lines_needed(f"{day_val}{note}"))
+        ws.row_dimensions[date_row].height = max(18, date_row_lines * _LINE_HEIGHT + 4)
 
         # ── Day-type row ───────────────────────────────────────────────────
         type_row = row + 1
@@ -172,11 +188,12 @@ def render_excel(
             c.fill = _fill(fgc)
             c.alignment = Alignment(horizontal="center", vertical="center")
             c.border = _thin()
-        ws.row_dimensions[type_row].height = 12
+        ws.row_dimensions[type_row].height = 14
 
         # ── Event rows ─────────────────────────────────────────────────────
         for slot in range(n_evt_rows):
             evt_row = row + 2 + slot
+            slot_lines = 1
             for i, d in enumerate(week):
                 col = _FIRST_DAY_COL + i
                 day_evts = by_date.get(d, [])
@@ -190,9 +207,10 @@ def render_excel(
                     label = f"{ev.course_code} {ev.title}"
                     c = ws.cell(row=evt_row, column=col, value=label)
                     c.fill = _fill(color)
-                    c.font = Font(size=8, bold=True, color="000000")
+                    c.font = Font(size=9, bold=True, color="000000")
                     c.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
                     c.border = _thin()
+                    slot_lines = max(slot_lines, _lines_needed(label))
                 else:
                     c = ws.cell(row=evt_row, column=col, value="")
                     if dt in ("weekend", "R"):
@@ -204,7 +222,7 @@ def render_excel(
                     elif dt == "grad":
                         c.fill = _fill(theme["grad_fill"])
                     c.border = _thin()
-            ws.row_dimensions[evt_row].height = 16
+            ws.row_dimensions[evt_row].height = max(18, slot_lines * _LINE_HEIGHT + 4)
 
         # ── Month label (column A, merged across all rows of this week) ────
         mc = ws.cell(row=row, column=_MONTH_COL)
