@@ -30,8 +30,39 @@ def _iter_dates(start: date, end: date):
         current += timedelta(days=1)
 
 
+def _build_explicit_day_map(raw: dict) -> dict[date, DayMeta]:
+    """Build a day map from a calendar with explicit per-date entries.
+
+    Format: raw["days"] maps ISO dates to {"day_type", "lesson"?, "notes"?}.
+    The official USMA rotation is NOT strictly alternating (e.g. two Day-2
+    classes can fall back-to-back), so explicit class numbers from the Buff
+    Card are authoritative. Weekends within the span are filled implicitly.
+    """
+    day_map: dict[date, DayMeta] = {}
+    for k, v in raw["days"].items():
+        d = date.fromisoformat(k)
+        day_map[d] = DayMeta(
+            day_type=v["day_type"],
+            notes=v.get("notes", []),
+            lesson=v.get("lesson"),
+        )
+    if day_map:
+        for d in _iter_dates(min(day_map), max(day_map)):
+            if d not in day_map and d.weekday() >= 5:
+                day_map[d] = DayMeta(day_type="weekend")
+    return day_map
+
+
 def _build_day_map(raw: dict) -> dict[date, DayMeta]:
-    """Generate the full day map from a raw JSON calendar dict."""
+    """Generate the full day map from a raw JSON calendar dict.
+
+    Calendars with an explicit "days" dict are used as-is; legacy calendars
+    define a start/end span plus special-day overrides and assume an
+    alternating Day-1/Day-2 rotation.
+    """
+    if "days" in raw:
+        return _build_explicit_day_map(raw)
+
     start = date.fromisoformat(raw["start_date"])
     end_instruction = date.fromisoformat(raw["end_date"])
 
@@ -131,7 +162,8 @@ class BaseCalendar:
                 from core.scraper import fetch_calendar_updates
                 updates = fetch_calendar_updates(ay)
                 if updates and "special_days" in updates:
-                    raw.setdefault("special_days", {}).update(updates["special_days"])
+                    target = raw["days"] if "days" in raw else raw.setdefault("special_days", {})
+                    target.update(updates["special_days"])
                     logger.info("Applied %d scraped special days", len(updates["special_days"]))
             except Exception as scrape_exc:
                 logger.debug("Scraper skipped: %s", scrape_exc)
@@ -168,8 +200,12 @@ class BaseCalendar:
             meta = self._day_map[d]
             if meta.is_academic and meta.track is not None:
                 t = meta.track
-                lesson_counts[t] += 1
-                self._lesson_to_date[t][lesson_counts[t]] = d
+                if meta.lesson is not None:
+                    # Explicit class number from the official calendar
+                    self._lesson_to_date[t][meta.lesson] = d
+                else:
+                    lesson_counts[t] += 1
+                    self._lesson_to_date[t][lesson_counts[t]] = d
 
     # ------------------------------------------------------------------
     # Public API
@@ -202,12 +238,15 @@ class BaseCalendar:
 
     @classmethod
     def current(cls) -> "BaseCalendar":
-        """Load the most appropriate calendar for today's date."""
+        """Load the most appropriate calendar for today's date.
+
+        Jan–May -> the in-progress spring semester; Jun–Dec -> the fall
+        semester (during summer, cadets plan for the upcoming fall).
+        """
         today = date.today()
         year = today.year % 100  # e.g. 2026 → 26
-        # Semester 1 runs roughly Aug–Dec, semester 2 runs Jan–May
-        sem = "1" if today.month >= 8 else "2"
-        # AY designation: the year the semester ends in
-        ay_year = year if sem == "2" else year + 1
-        ay = f"AY{ay_year:02d}-{sem}"
+        if today.month <= 5:
+            ay = f"AY{year:02d}-2"
+        else:
+            ay = f"AY{year + 1:02d}-1"
         return cls(ay)

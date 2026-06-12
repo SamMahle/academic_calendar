@@ -1,4 +1,12 @@
 from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass
+class SheetData:
+    """One worksheet with raw (typed) cell values — datetimes preserved."""
+    name: str
+    rows: list[list[Any]] = field(default_factory=list)
 
 
 @dataclass
@@ -10,3 +18,4 @@ class ParsedDoc:
     full_text: str = ""
     is_scan: bool = False       # True when PDF has negligible text yield
     scan_page_count: int = 0    # Number of pages that looked like scans
+    sheets: list[SheetData] = field(default_factory=list)  # XLSX only

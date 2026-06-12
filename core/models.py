@@ -12,6 +12,9 @@ CourseTrack = Literal[1, 2]
 class DayMeta(BaseModel):
     day_type: DayType
     notes: list[str] = []
+    # Explicit lesson number from the official calendar (e.g. "2-15" -> 15).
+    # None for non-academic days or legacy calendars without explicit numbers.
+    lesson: Optional[int] = None
 
     @property
     def is_academic(self) -> bool:

@@ -1,14 +1,14 @@
 {
   "_comment": "Event detection patterns for CadetCal. Uses Python regex syntax. Edit to tune extraction without code changes.",
   "event_type_keywords": {
-    "WPR": ["WPR", "Written Partial Review", "Written Partial Exam", "Written Partial"],
+    "WPR": ["WPR", "Written Partial Review", "Written Partial Exam", "Written Partial", "Midterm"],
     "TEE": ["TEE", "Term End Exam", "Final Exam", "Final"],
     "Writ": ["Writ", "Written Exercise", "Written Recitation"],
-    "PS":   ["PS", "Problem Set", "Homework Set", "HW Set"],
+    "PS":   ["PS", "PS1", "PS2", "PS3", "PS4", "PS5", "Problem Set", "Homework Set", "HW Set"],
     "HW":   ["HW", "Homework", "Assignment", "Reading Assignment"],
-    "Quiz": ["Quiz", "Quizlet", "In-class Quiz", "Pop Quiz"],
+    "Quiz": ["Quiz", "Quizlet", "In-class Quiz", "Pop Quiz", "Pre-Test"],
     "Lab":  ["Lab", "Laboratory", "Graded Lab", "Lab Report"],
-    "Project": ["Project", "Design Project", "Group Project", "Team Project", "Term Project", "Capstone"]
+    "Project": ["Project", "Final Project", "Design Project", "Group Project", "Team Project", "Term Project", "Capstone"]
   },
   "lesson_ref_patterns": [
     "(?:L|Lesson\\s*)(\\d+)(?:\\s*[-–]\\s*(\\d+))?",
