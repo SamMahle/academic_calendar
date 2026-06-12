@@ -343,8 +343,7 @@ elif st.session_state.step == "review":
             "🟢 ≥70% auto-accepted · 🟡 40–69% needs review · 🔴 <40% consider Copilot handoff"
         )
         df = _events_df(events)
-        _style_fn = getattr(df.style, "map", df.style.applymap)
-        styled = _style_fn(_confidence_style, subset=["Confidence"])
+        styled = df.style.map(_confidence_style, subset=["Confidence"])
         st.dataframe(styled, use_container_width=True, hide_index=True)
 
     # ── Edit / delete individual events ────────────────────────────────────
